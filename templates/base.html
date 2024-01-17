@@ -1,0 +1,53 @@
+<!-- base.html -->
+{% load static %}
+<html>
+<head>
+    <title>{% block title %}K & V M{% endblock title %}</title>
+    {% block css %} 
+        <link rel="stylesheet" href="{% static 'css/plantilla.css' %}">
+    {% endblock css %}
+</head>
+<body>
+    {% block navbar %}
+        <!-- Cabecera -->
+        <div class="cabezera">
+            <nav id="navbar">
+                <div id="navbar-logo">
+                    <img src="{% static 'images/logo_empresa_1.png' %}" alt="logo" style="width: 60px; height: 60px;">
+                </div>
+
+                <div>
+                    <ul>            
+                        <li class="nav-item"><a href="#">Productos</a></li>      
+                        <li class="nav-item"><a href="#">Soluciones</a></li>
+                        <li class="nav-item"><a href="#">Precios</a></li>  
+                        <li class="nav-item"><a href="#">Contáctate con nosotros</a></li>
+                    </ul>
+                </div>                                 
+            </nav>
+        </div>
+    {% endblock %}
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    {% block javascript %} {% endblock javascript %}
+    <script>
+        window.addEventListener("scroll", function () {
+          var header = document.querySelector(".cabezera");
+          var scrollPosition = window.scrollY;
+      
+          if (scrollPosition > 0) {
+            header.classList.add("fixed-header");
+          } else {
+            header.classList.remove("fixed-header");
+          }
+        });
+    </script>
+</body>
+</html>
