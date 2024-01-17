@@ -1,0 +1,64 @@
+/* plantilla.css */
+
+body {
+    background-image: url("../images/fondo.jpg");
+    color: #000000; /* Color de letras negro */
+    margin: 0; /* Eliminamos el margen predeterminado del cuerpo */
+    padding: 0; /* Eliminamos el relleno predeterminado del cuerpo */
+}
+
+.cabezera {
+    background-color: #4682b4; /* Color de fondo para la cabecera */
+    display: flex; /* Utilizamos flexbox para alinear elementos */
+    justify-content: space-between; /* Alineamos los elementos al principio y al final */
+    align-items: center; /* Centramos verticalmente los elementos */
+    padding: 10px 20px; /* Añadimos espacio interno a la cabecera */
+}
+
+#navbar-logo {
+    margin-right: 15px; /* Espaciado del logo en la barra de navegación */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Utilizamos flexbox para alinear elementos del menú */
+}
+
+.nav-item {
+    margin-left: 15px; /* Ajustamos el margen izquierdo entre los elementos del menú */
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Color de las letras en los enlaces de la barra de navegación */
+.nav-item a {
+    color: #add8e6; /* Azul claro */
+}
+
+.container {
+    margin-top: 20px; /* Espaciado superior del contenido principal */
+    padding: 20px; /* Espaciado interno del contenido principal */
+    border-radius: 10px; /* Bordes redondeados para el contenido principal */
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Estilos para centrar el contenido en home.html */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px; /* Ajusta el margen superior según sea necesario */
+    color: #ffffff; /* Color blanco para el texto dentro de .content */
+}
