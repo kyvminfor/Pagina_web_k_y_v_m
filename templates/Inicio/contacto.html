@@ -7,7 +7,7 @@
     <h1>Póngase en contacto con nosotros</h1>
     <h2>Por favor, llene el formulario</h2>
 
-    <form method="post" action="{% url 'contacto' %}">
+    <form method="post" action="{% url 'contacto' %}" class="form">
         {% csrf_token %}
         
         <label for="id_nombre" class="nombre contacto">Nombre:</label>

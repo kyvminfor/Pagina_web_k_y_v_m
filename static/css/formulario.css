@@ -1,13 +1,13 @@
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: rgba(173, 216, 230, 0.7); /* Fondo celeste semi transparente */
+    padding: 20px; /* Ajusta según tus necesidades */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
 .nombre.contacto {
     display: block;
     margin-bottom: 5px;
-    color: #000000;
+    color: #000000; /* Color blanco para los labels */
 }
 
 .input {
@@ -15,7 +15,6 @@ form {
     padding: 8px;
     margin-bottom: 15px;
 }
-
 /* Estilos para pantallas grandes (computadoras) */
 @media (min-width: 1024px) {
     .input {
