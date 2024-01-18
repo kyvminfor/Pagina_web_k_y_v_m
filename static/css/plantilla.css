@@ -83,8 +83,7 @@ a {
     }
 }
 
-**formulario.css:**
-```css
+
 form {
     display: flex;
     flex-direction: column;

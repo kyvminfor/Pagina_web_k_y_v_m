@@ -19,8 +19,11 @@ def contacto(request):
         formulario = FormularioForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            return redirect('inicio')  # Puedes redirigir a donde desees después de guardar
+            return redirect('confirmacion')  # Puedes redirigir a donde desees después de guardar
     else:
         formulario = FormularioForm()
 
     return render(request, 'Inicio/contacto.html', {'formulario': formulario})
+
+def confirmacion(request):
+    return render(request, 'Inicio/confirmacion_formulario.html')
