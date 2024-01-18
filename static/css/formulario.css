@@ -1,0 +1,17 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nombre.contacto {
+    display: block;
+    margin-bottom: 5px;
+    color: #000000; /* Color blanco para los labels */
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
