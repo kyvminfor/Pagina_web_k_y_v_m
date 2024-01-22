@@ -11,16 +11,16 @@
         {% csrf_token %}
         
         <label for="id_nombre" class="nombre contacto">Nombre:</label>
-        <input type="text" name="nombre" id="id_nombre" class="input" required>
+        <input type="text" name="nombre" id="id_nombre" class="input" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" title="Debe ingresar solo letras" required>
 
         <label for="id_empresa" class="nombre contacto">Empresa:</label>
         <input type="text" name="empresa" id="id_empresa" class="input">
 
         <label for="id_telefono" class="nombre contacto">Teléfono:</label>
-        <input type="tel" name="telefono" id="id_telefono" class="input" required>
+        <input type="tel" name="telefono" id="id_telefono" class="input" pattern="[0-9]+" title="Debe ingresar solo números" required>
 
         <label for="id_email" class="nombre contacto">Email:</label>
-        <input type="email" name="email" id="id_email" class="input" required>
+        <input type="email" name="email" id="id_email" class="input" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Ingrese un formato de correo electrónico válido" required>
 
         <label for="id_motivo_contacto" class="nombre contacto">Motivo de contacto:</label>
         <textarea name="motivo_contacto" id="id_motivo_contacto" class="input" rows="4" required></textarea>
