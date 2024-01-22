@@ -18,12 +18,22 @@ def contacto(request):
     if request.method == 'POST':
         formulario = FormularioForm(request.POST)
         if formulario.is_valid():
-            formulario.save()
-            return redirect('confirmacion')  # Puedes redirigir a donde desees después de guardar
+            nombre_empresa = formulario['empresa'].value()
+            if Formulario.objects.filter(empresa=nombre_empresa).exists():
+                # La empresa ya existe, imprime un mensaje para depuración
+                return redirect('error')
+            else:
+                formulario.save()
+                return redirect('confirmacion')
     else:
         formulario = FormularioForm()
 
     return render(request, 'Inicio/contacto.html', {'formulario': formulario})
 
+
 def confirmacion(request):
     return render(request, 'Inicio/confirmacion_formulario.html')
+
+def error(request):
+    return render(request, 'Inicio/error.html')
+
