@@ -3,8 +3,9 @@ from .models import Formulario
 from .models import FormularioPersonas  # Importa el modelo
 from .forms import FormularioForm  # Asumiendo que tienes un formulario asociado al modelo
 from .forms import FormularioPersonasForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
+
 
 
 def inicio(request):
@@ -59,11 +60,25 @@ def form_personas(request):
         if formulario.is_valid():
             formulario.save()
             # No olvides realizar las acciones adicionales que necesites aquí, como enviar correos electrónicos, etc.
+            enviar_correo_trabajadores(formulario.cleaned_data)
             return redirect('confirmacion_2')
     else:
         formulario = FormularioPersonasForm()
 
     return render(request, 'Inicio/form_personas.html', {'formulario': formulario})
 
+def enviar_correo_trabajadores(datos_formulario):
+    asunto = 'Nueva solicitud de posible trabajador'
+    mensaje = f'Nombre: {datos_formulario["nombre"]}\n' \
+              f'Email: {datos_formulario["email"]}\n' \
+              f'Profesión: {datos_formulario["profesion"]}\n' \
+              f'Link de LinkedIn: {datos_formulario["linkedin_url"]}\n' \
+              f'CV Adjunto a continuación'
+
+    # Adjuntar el archivo CV al mensaje de correo
+    archivo_cv = datos_formulario["cv"]
+    email = EmailMessage(asunto, mensaje, settings.EMAIL_HOST_USER, ['kkvm992@gmail.com'])
+    email.attach(archivo_cv.name, archivo_cv.read(), archivo_cv.content_type)
+    email.send()
 def confirmacion_2(request):
     return render(request, 'Inicio/confirmacion_formulario_2.html')

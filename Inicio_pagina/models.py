@@ -21,7 +21,7 @@ class FormularioPersonas(models.Model):
     email = models.CharField(max_length=150)
     profesion = models.CharField(max_length=80)
     cv = models.FileField(upload_to='cv/')  # Campo para adjuntar archivos
-    linkedin_url = models.URLField()  # Campo para la URL de LinkedIn
+    linkedin_url = models.URLField(blank=True, null=True, default=None)  # Campo para la URL de LinkedIn
 
     def __str__(self):
         return self.nombre
