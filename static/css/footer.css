@@ -13,6 +13,6 @@ footer {
     padding: 10px; /* Ajusta el padding para hacer el footer más delgado */
     text-align: center;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
