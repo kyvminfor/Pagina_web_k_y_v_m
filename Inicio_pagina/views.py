@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Formulario
+from .models import FormularioPersonas  # Importa el modelo
 from .forms import FormularioForm  # Asumiendo que tienes un formulario asociado al modelo
+from .forms import FormularioPersonasForm
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -51,4 +53,17 @@ def confirmacion(request):
     return render(request, 'Inicio/confirmacion_formulario.html')
 
 
+def form_personas(request):
+    if request.method == 'POST':
+        formulario = FormularioPersonasForm(request.POST, request.FILES)  # Asegúrate de manejar archivos adjuntos
+        if formulario.is_valid():
+            formulario.save()
+            # No olvides realizar las acciones adicionales que necesites aquí, como enviar correos electrónicos, etc.
+            return redirect('confirmacion_2')
+    else:
+        formulario = FormularioPersonasForm()
 
+    return render(request, 'Inicio/form_personas.html', {'formulario': formulario})
+
+def confirmacion_2(request):
+    return render(request, 'Inicio/confirmacion_formulario_2.html')

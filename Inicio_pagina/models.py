@@ -15,3 +15,13 @@ class Formulario(models.Model):
 
     def __str__(self):
         return self.empresa
+
+class FormularioPersonas(models.Model):
+    nombre = models.CharField(max_length=50)
+    email = models.CharField(max_length=150)
+    profesion = models.CharField(max_length=80)
+    cv = models.FileField(upload_to='cv/')  # Campo para adjuntar archivos
+    linkedin_url = models.URLField()  # Campo para la URL de LinkedIn
+
+    def __str__(self):
+        return self.nombre

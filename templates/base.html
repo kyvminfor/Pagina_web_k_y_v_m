@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{% static 'css/item.css' %}">
         <link rel="stylesheet" href="{% static 'css/perfiles.css' %}">
         <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer_ul.css' %}">
     {% endblock css %}
 </head>
 <body>
@@ -59,7 +60,15 @@
         });
     </script>
     <footer>
+        
         <p>Dirección de la empresa: Amunategui 810, oficina 612, informaticakyvm@gmail.com</p>
+        <nav id="navbar">
+            <div>
+                <ul>
+                    <li class="nav-item"><a href="{% url 'form_personas' %}">Trabaja con nostros</a></li>
+                </ul>
+            </div>                                 
+        </nav>
     </footer>
 </body>
 </html>
