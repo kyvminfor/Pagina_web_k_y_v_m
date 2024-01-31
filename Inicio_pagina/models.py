@@ -7,7 +7,7 @@ class Formulario(models.Model):
     ]
 
     nombre = models.CharField(max_length=50)
-    empresa = models.CharField(max_length=100, blank=True, null=True)
+    empresa = models.CharField(max_length=100, blank=True, null=True, default=None)  # Cambios aquí
     telefono = models.IntegerField()
     email = models.CharField(max_length=150)
     motivo_contacto = models.CharField(max_length=400)

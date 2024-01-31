@@ -19,21 +19,17 @@ def contacto(request):
     if request.method == 'POST':
         formulario = FormularioForm(request.POST)
         if formulario.is_valid():
-            nombre_empresa = formulario['empresa'].value()
-            if Formulario.objects.filter(empresa=nombre_empresa).exists():
-                # La empresa ya existe, imprime un mensaje para depuración
-                return redirect('error')
-            else:
-                formulario.save()
+            formulario.save()
 
-                # Envía el correo electrónico
-                enviar_correo(formulario.cleaned_data)
+            # Envía el correo electrónico
+            enviar_correo(formulario.cleaned_data)
 
-                return redirect('confirmacion')
+            return redirect('confirmacion')
     else:
         formulario = FormularioForm()
 
     return render(request, 'Inicio/contacto.html', {'formulario': formulario})
+
 
 def enviar_correo(datos_formulario):
     asunto = 'Nueva solicitud de contacto'
@@ -54,6 +50,5 @@ def enviar_correo(datos_formulario):
 def confirmacion(request):
     return render(request, 'Inicio/confirmacion_formulario.html')
 
-def error(request):
-    return render(request, 'Inicio/error.html')
+
 
