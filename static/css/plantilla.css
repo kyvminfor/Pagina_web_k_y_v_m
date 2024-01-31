@@ -1,16 +1,6 @@
 body {
-    background-image: url("../images/fondo_2.jpg");
-    color: #000000;
     margin: 0;
     padding: 0;
-}
-
-.cabezera {
-    background-color: #4682b4;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
 }
 
 #navbar-logo {
@@ -32,9 +22,7 @@ a {
     text-decoration: none;
 }
 
-.nav-item a {
-    color: #add8e6;
-}
+
 
 .container {
     margin-top: 20px;

@@ -6,7 +6,6 @@ urlpatterns = [
     path('inicio', views.inicio, name='inicio'),  # También mantén tu ruta existente para '/inicio/'
     path('productos', views.productos, name='productos'),
     path('soluciones', views.soluciones, name='soluciones'),
-    path('precios', views.precios, name='precios'),
     path('contacto', views.contacto, name='contacto'),
     path('confirmacion', views.confirmacion, name='confirmacion'),
     path('error', views.error, name='error'),

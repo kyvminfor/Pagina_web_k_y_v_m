@@ -1,14 +1,19 @@
-<!-- base.html -->
 {% load static %}
+<!DOCTYPE html>
 <html>
 <head>
     <title>{% block title %}K & V M{% endblock title %}</title>
     {% block css %} 
         <link rel="stylesheet" href="{% static 'css/plantilla.css' %}">
         <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+        <link rel="stylesheet" href="{% static 'css/img_fondo.css' %}">
+        <link rel="stylesheet" href="{% static 'css/cabezera.css' %}">
+        <link rel="stylesheet" href="{% static 'css/item.css' %}">
     {% endblock css %}
 </head>
 <body>
+    <div class="background-container"></div> <!-- Nuevo contenedor para la imagen de fondo -->
+
     {% block navbar %}
         <!-- Cabecera -->
         <div class="cabezera">
@@ -21,9 +26,8 @@
 
                 <div>
                     <ul>
-                        <li class="nav-item"><a href="{% url 'productos' %}">Productos</a></li>
+                        <li class="nav-item"><a href="{% url 'productos' %}">Servicios</a></li>
                         <li class="nav-item"><a href="{% url 'soluciones' %}">Soluciones</a></li>
-                        <li class="nav-item"><a href="{% url 'precios' %}">Precios</a></li>
                         <li class="nav-item"><a href="{% url 'contacto' %}">Contáctate con nosotros</a></li>
                     </ul>
                 </div>                                 

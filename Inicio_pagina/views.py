@@ -14,8 +14,6 @@ def productos(request):
 def soluciones(request):
     return render(request, 'Inicio/soluciones.html')
 
-def precios(request):
-    return render(request, 'Inicio/precios.html')
 
 def contacto(request):
     if request.method == 'POST':
