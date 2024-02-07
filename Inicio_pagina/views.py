@@ -5,7 +5,7 @@ from .forms import FormularioForm  # Asumiendo que tienes un formulario asociado
 from .forms import FormularioPersonasForm
 from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
-
+from django.core.mail import EmailMultiAlternatives
 
 
 def inicio(request):
@@ -47,7 +47,7 @@ def enviar_correo(datos_formulario):
         asunto,
         mensaje,
         settings.EMAIL_HOST_USER,  # Remitente
-        ['kkvm992@gmail.com'],  # Destinatario(s)
+        ['informaticakyvm@gmail.com'],  # Destinatario(s)
         fail_silently=False,
     )
 def confirmacion(request):
@@ -69,16 +69,34 @@ def form_personas(request):
 
 def enviar_correo_trabajadores(datos_formulario):
     asunto = 'Nueva solicitud de posible trabajador'
-    mensaje = f'Nombre: {datos_formulario["nombre"]}\n' \
-              f'Email: {datos_formulario["email"]}\n' \
-              f'Profesión: {datos_formulario["profesion"]}\n' \
-              f'Link de LinkedIn: {datos_formulario["linkedin_url"]}\n' \
-              f'CV Adjunto a continuación'
+    mensaje_texto = f'Nombre: {datos_formulario["nombre"]}\n' \
+                    f'Email: {datos_formulario["email"]}\n' \
+                    f'Profesión: {datos_formulario["profesion"]}\n' \
+                    f'Link de LinkedIn: {datos_formulario["linkedin_url"]}\n' \
+                    f'CV Adjunto a continuación'
 
     # Adjuntar el archivo CV al mensaje de correo
     archivo_cv = datos_formulario["cv"]
-    email = EmailMessage(asunto, mensaje, settings.EMAIL_HOST_USER, ['kkvm992@gmail.com'])
-    email.attach(archivo_cv.name, archivo_cv.read(), archivo_cv.content_type)
+    mensaje_html = "<p>" + mensaje_texto.replace("\n", "<br>") + "</p>"
+    email = EmailMultiAlternatives(asunto, mensaje_texto, settings.EMAIL_HOST_USER, ['informaticakyvm@gmail.com'])
+    email.attach_alternative(mensaje_html, "text/html")
+    
+    # Obtenemos el contenido del archivo adjunto
+    archivo_cv_content = archivo_cv.read()
+    
+    # Establecemos el tipo MIME del archivo adjunto manualmente
+    if archivo_cv.name.endswith('.pdf'):
+        tipo_mime = 'application/pdf'
+    elif archivo_cv.name.endswith(('.doc', '.docx')):
+        tipo_mime = 'application/msword'
+    else:
+        tipo_mime = 'application/octet-stream'  # Tipo MIME genérico
+
+    # Adjuntamos el archivo al correo con el tipo MIME adecuado
+    email.attach(archivo_cv.name, archivo_cv_content, tipo_mime)
+    
+    # Enviar el correo
     email.send()
+    
 def confirmacion_2(request):
     return render(request, 'Inicio/confirmacion_formulario_2.html')
